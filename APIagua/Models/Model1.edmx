@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="aguaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="depositos">
+          <Key>
+            <PropertyRef Name="id_deposito" />
+          </Key>
+          <Property Name="id_deposito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="id_presa" Type="int" />
+          <Property Name="registro" Type="float" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="presas">
+          <Key>
+            <PropertyRef Name="id_presa" />
+          </Key>
+          <Property Name="id_presa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="registro" Type="float" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="registroDeposito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_deposito" Type="int" />
+          <Property Name="registro" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="registroPresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_presa" Type="int" />
+          <Property Name="registro" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="registroTanque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tanque" Type="int" />
+          <Property Name="registro" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tanques">
+          <Key>
+            <PropertyRef Name="id_tanque" />
+          </Key>
+          <Property Name="id_tanque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="colonia" Type="varchar" MaxLength="50" />
+          <Property Name="registro" Type="float" />
+          <Property Name="id_presa" Type="int" />
+          <Property Name="id_deposito" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="colonia" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="aguaModelStoreContainer">
+          <EntitySet Name="depositos" EntityType="Self.depositos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="presas" EntityType="Self.presas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registroDeposito" EntityType="Self.registroDeposito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registroPresa" EntityType="Self.registroPresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registroTanque" EntityType="Self.registroTanque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tanques" EntityType="Self.tanques" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aguaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="deposito">
+          <Key>
+            <PropertyRef Name="id_deposito" />
+          </Key>
+          <Property Name="id_deposito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_presa" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="registro" Type="Double" />
+        </EntityType>
+        <EntityType Name="presa">
+          <Key>
+            <PropertyRef Name="id_presa" />
+          </Key>
+          <Property Name="id_presa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="registro" Type="Double" />
+        </EntityType>
+        <EntityType Name="registroDeposito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_deposito" Type="Int32" />
+          <Property Name="registro" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="registroPresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_presa" Type="Int32" />
+          <Property Name="registro" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="registroTanque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tanque" Type="Int32" />
+          <Property Name="registro" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tanque">
+          <Key>
+            <PropertyRef Name="id_tanque" />
+          </Key>
+          <Property Name="id_tanque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_presa" Type="Int32" />
+          <Property Name="id_deposito" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="registro" Type="Double" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="aguaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="depositos" EntityType="Self.deposito" />
+          <EntitySet Name="presas" EntityType="Self.presa" />
+          <EntitySet Name="registroDepositoes" EntityType="Self.registroDeposito" />
+          <EntitySet Name="registroPresas" EntityType="Self.registroPresa" />
+          <EntitySet Name="registroTanques" EntityType="Self.registroTanque" />
+          <EntitySet Name="tanques" EntityType="Self.tanque" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <EntitySet Name="estadoes" EntityType="aguaModel.estado" />
+        </EntityContainer>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="aguaModelStoreContainer" CdmEntityContainer="aguaEntities">
+          <EntitySetMapping Name="depositos">
+            <EntityTypeMapping TypeName="aguaModel.deposito">
+              <MappingFragment StoreEntitySet="depositos">
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_deposito" ColumnName="id_deposito" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_presa" ColumnName="id_presa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presas">
+            <EntityTypeMapping TypeName="aguaModel.presa">
+              <MappingFragment StoreEntitySet="presas">
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_presa" ColumnName="id_presa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registroDepositoes">
+            <EntityTypeMapping TypeName="aguaModel.registroDeposito">
+              <MappingFragment StoreEntitySet="registroDeposito">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_deposito" ColumnName="id_deposito" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registroPresas">
+            <EntityTypeMapping TypeName="aguaModel.registroPresa">
+              <MappingFragment StoreEntitySet="registroPresa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_presa" ColumnName="id_presa" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registroTanques">
+            <EntityTypeMapping TypeName="aguaModel.registroTanque">
+              <MappingFragment StoreEntitySet="registroTanque">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_tanque" ColumnName="id_tanque" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tanques">
+            <EntityTypeMapping TypeName="aguaModel.tanque">
+              <MappingFragment StoreEntitySet="tanques">
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_tanque" ColumnName="id_tanque" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="id_presa" ColumnName="id_presa" />
+                <ScalarProperty Name="id_deposito" ColumnName="id_deposito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="aguaModel.usuario">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estadoes">
+            <EntityTypeMapping TypeName="aguaModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
