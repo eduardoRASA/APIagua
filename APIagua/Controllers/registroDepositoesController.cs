@@ -24,15 +24,15 @@ namespace APIagua.Controllers
 
         // GET: api/registroDepositoes/5
         [ResponseType(typeof(registroDeposito))]
-        public IHttpActionResult GetregistroDeposito(int id)
+        public List<registroDeposito> GetregistroDeposito(int id)
         {
-            registroDeposito registroDeposito = db.registroDepositoes.Find(id);
-            if (registroDeposito == null)
+            var registrosXdeposito = db.registroDepositoes.Where(i => i.id_deposito == id).OrderByDescending(i => i.id).ToList();
+            if (registrosXdeposito == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(registroDeposito);
+            return registrosXdeposito;
         }
 
         // PUT: api/registroDepositoes/5

@@ -24,15 +24,15 @@ namespace APIagua.Controllers
 
         // GET: api/registroTanques/5
         [ResponseType(typeof(registroTanque))]
-        public IHttpActionResult GetregistroTanque(int id)
+        public List<registroTanque> GetregistroTanque(int id)
         {
-            registroTanque registroTanque = db.registroTanques.Find(id);
-            if (registroTanque == null)
+            var registrosXtanque = db.registroTanques.Where(i => i.id_tanque == id).OrderByDescending(i => i.id).ToList();
+            if (registrosXtanque == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(registroTanque);
+            return registrosXtanque;
         }
 
         // PUT: api/registroTanques/5

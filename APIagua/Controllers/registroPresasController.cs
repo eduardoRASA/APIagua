@@ -25,7 +25,7 @@ namespace APIagua.Controllers
         [ResponseType(typeof(registroPresa))]
         public List<registroPresa> GetregistroPresa(int id)
         {
-            var registrosXpresa = db.registroPresas.Where(i => i.id_presa == id).ToList();
+            var registrosXpresa = db.registroPresas.Where(i => i.id_presa == id).OrderByDescending(i => i.id).ToList();
             if (registrosXpresa == null)
             {
                 return null;
@@ -113,5 +113,6 @@ namespace APIagua.Controllers
         {
             return db.registroPresas.Count(e => e.id == id) > 0;
         }
+
     }
 }

@@ -17,9 +17,12 @@ namespace APIagua.Controllers
         private aguaEntities db = new aguaEntities();
 
         // GET: api/tanques
-        public IQueryable<tanque> Gettanques()
+        public IList<tanque> Gettanques()
         {
-            return db.tanques;
+            var tanquesList = db.tanques
+                             .SqlQuery("SELECT * FROM tanques")
+                             .ToList<tanque>();
+            return tanquesList;
         }
 
         // GET: api/tanques/5
